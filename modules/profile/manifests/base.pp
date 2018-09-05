@@ -3,6 +3,7 @@ class profile::base {
 
   class {'::puppet_agent':
     package_version => '5.5.6',
+    manage_repo     => false,
   }
 
   package { 'zsh':
