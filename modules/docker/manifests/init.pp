@@ -1,7 +1,5 @@
 class docker (
   $version    = $docker::params::version,
-  $ensure     = $docker::params::ensure,
-  $enable     = $docker::params::enable,
 ){
   yumrepo { 'docker-ce-stable':
     descr    => 'Docker CE Stable - $basearch',
@@ -18,8 +16,8 @@ class docker (
   }
 
   service { 'docker':
-    ensure  => $ensure,
-    enable  => $enable,
+    ensure  => running,
+    enable  => true,
     require => Package['docker-ce'],
   }
 }
