@@ -4,7 +4,7 @@ class docker (
   $enable     = $docker::params::enable,
 ){
   yumrepo { 'docker-ce-stable':
-    name     => 'Docker CE Stable - $basearch'
+    name     => 'Docker CE Stable - $basearch',
     baseurl  => 'https://download.docker.com/linux/fedora/$releasever/$basearch/stable',
     ensure   => present,
     enabled  => true,
