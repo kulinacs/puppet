@@ -12,13 +12,13 @@ class docker (
   }
 
   package { 'docker-ce':
-    ensure => $version,
-    after  => Yumrepo['Docker CE Stable'],
+    ensure  => $version,
+    require => Yumrepo['Docker CE Stable'],
   }
 
   service { 'docker':
-    ensure => $ensure,
-    enable => $enable,
-    after  => Package['docker-ce'],
+    ensure  => $ensure,
+    enable  => $enable,
+    require => Package['docker-ce'],
   }
 }
