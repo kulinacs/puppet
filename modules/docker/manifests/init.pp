@@ -3,7 +3,8 @@ class docker (
   $ensure     = $docker::params::ensure,
   $enable     = $docker::params::enable,
 ){
-  yumrepo { 'Docker CE Stable':
+  yumrepo { 'docker-ce-stable':
+    name     => 'Docker CE Stable - $basearch'
     baseurl  => 'https://download.docker.com/linux/fedora/$releasever/$basearch/stable',
     ensure   => present,
     enabled  => true,
@@ -13,7 +14,7 @@ class docker (
 
   package { 'docker-ce':
     ensure  => $version,
-    require => Yumrepo['Docker CE Stable'],
+    require => Yumrepo['docker-ce-stable'],
   }
 
   service { 'docker':
