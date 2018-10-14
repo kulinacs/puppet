@@ -1,3 +1,3 @@
 class docker::params {
-  $version    = 'installed'
+  $version = 'installed'
 }
