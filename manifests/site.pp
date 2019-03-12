@@ -9,4 +9,5 @@ node 'ipa.hm.kulinacs.com' {
 node /^kube\d+\.hm\.kulinacs\.com$/ {
   class { 'puppet': }
   class { 'katello_agent': }
+  class { 'kubernetes': }
 }
