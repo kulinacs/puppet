@@ -1,13 +1,6 @@
-node default {
-  class { 'profile::base': }
+node 'puppet.hm.kulinacs.com' {
 }
 
-node 'elastic.hm.kulinacs.com' {
-  class { 'docker': }
-  class { 'katello_agent': }
-}
-
-node 'faas.hm.kulinacs.com' {
-  class { 'docker': }
+node 'ipa.hm.kulinacs.com' {
   class { 'katello_agent': }
 }
