@@ -1,4 +1,4 @@
-class katello_agent {
+class puppet {
   service { 'puppet':
     ensure => 'running',
     enable => 'true',
