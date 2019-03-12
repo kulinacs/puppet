@@ -1,4 +1,8 @@
 class kubernetes {
+  package { 'docker':
+    ensure  => 'installed',
+  }
+
   package { 'kubelet':
     ensure  => 'installed',
   }
@@ -9,6 +13,16 @@ class kubernetes {
 
   package { 'kubectl':
     ensure  => 'installed',
+  }
+
+  sysctl { "net.bridge.bridge-nf-call-iptables":
+    ensure => present,
+    value  => "1",
+  }
+
+  sysctl { "net.bridge.bridge-nf-call-ip6tables":
+    ensure => present,
+    value  => "1",
   }
 
   service { 'kubelet':
