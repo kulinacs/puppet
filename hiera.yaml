@@ -1,2 +1,7 @@
 ---
 version: 5
+hierarchy:
+  - name: "Per-node data"
+    path: "nodes/%{trusted.certname}.yaml"
+  - name: "Common data"
+    path: "common.yaml"
