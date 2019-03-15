@@ -1,7 +1,7 @@
+# kubernetes installs and sets up a system to be managed by kubeadm
 class kubernetes {
-  package { 'docker':
-    ensure  => 'installed',
-  }
+
+  include ::docker
 
   package { 'kubelet':
     ensure  => 'installed',
@@ -15,14 +15,16 @@ class kubernetes {
     ensure  => 'installed',
   }
 
-  sysctl { "net.bridge.bridge-nf-call-iptables":
+  kmod::load { 'br_netfilter': }
+
+  sysctl { 'net.bridge.bridge-nf-call-iptables':
     ensure => present,
-    value  => "1",
+    value  => '1',
   }
 
-  sysctl { "net.bridge.bridge-nf-call-ip6tables":
+  sysctl { 'net.bridge.bridge-nf-call-ip6tables':
     ensure => present,
-    value  => "1",
+    value  => '1',
   }
 
   service { 'kubelet':

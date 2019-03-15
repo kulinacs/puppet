@@ -1,6 +1,7 @@
+# apcupsd installs and configures apcupsd to manage APC UPSs
 class apcupsd (
-  $ups_cable = $apcupsd::params::ups_cable,
   $ups_name,
+  $ups_cable = $apcupsd::params::ups_cable,
   $ups_type = $apcupsd::params::ups_type,
   $ups_device = $apcupsd::params::ups_device,
 ) inherits apcupsd::params {
