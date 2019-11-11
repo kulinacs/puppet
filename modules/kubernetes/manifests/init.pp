@@ -1,18 +1,21 @@
 # kubernetes installs and sets up a system to be managed by kubeadm
-class kubernetes {
+class kubernetes (
+  $version = $kubernetes::params::version,
+)
+{
 
   include ::docker
 
   package { 'kubelet':
-    ensure  => 'installed',
+    ensure  => $version,
   }
 
   package { 'kubeadm':
-    ensure  => 'installed',
+    ensure  => $version,
   }
 
   package { 'kubectl':
-    ensure  => 'installed',
+    ensure  => $version,
   }
 
   kmod::load { 'br_netfilter': }

@@ -11,8 +11,14 @@ node 'ipa.hm.kulinacs.com' {
   class { 'katello_agent': }
 }
 
-node /^kube\d+\.hm\.kulinacs\.com$/ {
+node /^k8s\d+\.hm\.kulinacs\.com$/ {
   class { 'puppet': }
   class { 'katello_agent': }
   class { 'kubernetes': }
+}
+
+node /^docker\d+\.hm\.kulinacs\.com$/ {
+  class { 'puppet': }
+  class { 'katello_agent': }
+  class { 'docker': }
 }
