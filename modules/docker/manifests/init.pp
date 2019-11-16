@@ -1,12 +1,12 @@
 # docker installs and enables docker
 class docker {
-  package { 'docker':
+  package { 'docker-ce':
     ensure  => 'installed',
   }
 
   service { 'docker':
     ensure  => running,
     enable  => true,
-    require => Package['docker'],
+    require => Package['docker-ce'],
   }
 }

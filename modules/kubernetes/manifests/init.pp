@@ -3,19 +3,26 @@ class kubernetes (
   $version = $kubernetes::params::version,
 )
 {
-
   include ::docker
+
+  yumrepo { 'kubernetes':
+      baseurl => 'https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64',
+      enabled => 1,
+  }
 
   package { 'kubelet':
     ensure  => $version,
+    require => Yumrepo['kubernetes'],
   }
 
   package { 'kubeadm':
     ensure  => $version,
+    require => Yumrepo['kubernetes'],
   }
 
   package { 'kubectl':
     ensure  => $version,
+    require => Yumrepo['kubernetes'],
   }
 
   kmod::load { 'br_netfilter': }
