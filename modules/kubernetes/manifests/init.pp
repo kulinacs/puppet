@@ -5,6 +5,13 @@ class kubernetes (
 {
   include ::docker
 
+  file { '/etc/docker/daemon.json':
+    mode => "0644",
+    owner => 'root',
+    group => 'root',
+    source => 'puppet:///modules/kubernetes/daemon.json',
+  }
+
   yumrepo { 'kubernetes':
     baseurl => 'https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64',
     enabled => 1,
