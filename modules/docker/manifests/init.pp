@@ -1,7 +1,10 @@
 # docker installs and enables docker
-class docker {
+class docker (
+  $version = $docker::params::version,
+)
+{
   package { 'docker-ce':
-    ensure  => 'installed',
+    ensure  => $version,
   }
 
   service { 'docker':
